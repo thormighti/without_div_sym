@@ -2,7 +2,7 @@
 //!
 //!
 //! This crate is just a fun play not to be taken serious. if you realy want to do division,
-//! just use the divisor(/) symbol in your program. This is just for learning purposes.
+//! just use the `divisor(/)` symbol in your program. This is just for learning purposes.
 //!
 
 extern crate num;
@@ -50,7 +50,6 @@ pub mod wo_divisor {
             + Copy
             + Zero,
     {
-        //-> Option<i32>{
         //when the divisor is zero
 
         let checkzero: T = zero();
