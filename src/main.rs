@@ -1,6 +1,6 @@
 use without_div_sym::divide;
 fn main() {
-    let a :u32 = 7;
-    let res = divide(a, 2);
-    println!("{res}");
+    let a :u16 = 250;
+    let res = divide(a, 5);
+    println!("{:?}", res);
 }

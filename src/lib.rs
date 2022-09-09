@@ -1,34 +1,10 @@
 //! # Without Divisor Symbol
 //!
+//!
 //! This crate is just a fun play not to be taken serious. if you realy want to do division,
 //! just use the divisor(/) symbol in your program. This is just for learning purposes.
 //!
 
-/// contains the geneic function  which takes generic type of 2 numbers and returns their resut
-///
-/// # Example
-///
-///
-/// ```
-/// let a :u32 = 7;
-/// let b : i32 = 2;
-///
-/// assert_eq!(3, without_div_sym::divide(a,b));
-/// ```
-///    
-///
-/// # Problems
-///
-/// This crate doesnt accept floating point number yet. i will work on that on next versions.
-/// the example below will cause an error
-///
-/// ```
-/// let a = 15.0;
-/// let b = 5.0;
-/// assert_eq!(3.0, without_div_sym::divide(a,b)); // This wont complie, it will bring out an error
-///
-///```
-///
 extern crate num;
 
 pub use self::wo_divisor::divide;
@@ -36,7 +12,34 @@ pub mod wo_divisor {
 
     use num::{one, zero, One, Zero};
 
-    pub fn divide<T>(mut dividend: T, mut divisor: T) -> T
+    /// contains the geneic function  which takes generic type of 2 numbers and returns their resut
+    /// when divided
+    ///
+    /// # Example
+    ///
+    ///
+    /// ```
+    /// let a  = 7;
+    /// let b = 2;
+    ///
+    /// assert_eq!(Some(3), without_div_sym::divide(a,b));
+    /// ```
+    ///    
+    ///
+    /// # Problems
+    ///
+    /// This crate doesnt accept floating point number yet. i will work on that on next versions.
+    /// the example below will cause an error
+    ///
+    /// ```
+    /// let a = 15.0;
+    /// let b = 5.0;
+    /// assert_eq!(some(3.0), without_div_sym::divide(a,b)); // This wont complie, it will bring out an error
+    ///
+    ///```
+    ///
+
+    pub fn divide<T>(mut dividend: T, mut divisor: T) -> Option<T>
     where
         T: std::cmp::PartialOrd
             + std::ops::Not<Output = T>
@@ -55,7 +58,7 @@ pub mod wo_divisor {
 
         if divisor == checkzero {
             // None
-            panic!("");
+            return None;
         }
         //to handle negative numbers
         let mut is_negative = false;
@@ -88,6 +91,6 @@ pub mod wo_divisor {
         if is_negative {
             result = !result + theone;
         }
-        result
+        Some(result)
     }
 }
